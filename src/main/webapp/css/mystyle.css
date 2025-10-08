@@ -1,13 +1,70 @@
-.primary-background {
+/* .primary-background {
     background-color: #1d3557!important; /* Dark background color */
-}
-.hero-section {
-  background: linear-gradient(135deg, #457B9D, #A8DADC);
-  min-height: 90vh;
+/* } */
+/* .hero-section {
+  background: linear-gradient(135deg,#1d3557, #457B9D);
   padding: 60px 0;
 }
 
 .hero-section h1,
 .hero-section h4 {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}  */
+
+
+
+/* Navbar */
+.navbar {
+  background-color: #1D3557 !important;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #1D3557, #457B9D);
+  text-align: center;
+  padding: 60px 0px;
+}
+
+/* Buttons */
+.btn-light {
+  background-color: #E63946;
+  color: #F1FAEE;
+  border: none;
+}
+.btn-light:hover {
+  background-color: #d62828;
+}
+.btn-outline-light {
+  border: 2px solid #F1FAEE;
+  color: #F1FAEE;
+}
+.btn-outline-light:hover {
+  background-color: #F1FAEE;
+  color: #1D3557;
+}
+
+/* Cards */
+.card {
+  background-color: #F1FAEE;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card-title {
+  color: #1D3557;
+}
+.card-text {
+  color: #457B9D;
+}
+.primary-background {
+  background-color: #E63946;
+}
+
+/* General */
+body {
+  background-color: #A8DADC;
+  color: #1D3557;
 }

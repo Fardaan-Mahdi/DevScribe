@@ -12,6 +12,12 @@
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
             <link rel="stylesheet" href="css/mystyle.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+            <style>
+                .banner-background {
+                    clip-path: polygon(0 0, 100% 0, 100% 85%, 75% 90%, 50% 95%, 25% 90%, 0 85%);
+                }
+                
+            </style>
         </head>
 
         <body>
@@ -20,21 +26,109 @@
 
                 <!-- banner -->
                 <div class="container-fluid p-0 m-0">
-                    <section class="hero-section text-white d-flex align-items-center">
-                        <div class="container">
+                    <section class="hero-section text-white d-flex align-items-center banner-background">
+                        <div class="container d-flex align-items-center flex-column text-center">
                             <h1 class="display-4 fw-bold mb-3">Welcome to DevScribe</h1>
-                            <h4 class="mb-4">A Programming Blog for Curious Minds</h4>
+                            <h4 class="mb-3">A Programming Blog for Curious Minds</h4>
                             <p class="lead mb-4">
                                 A space where developers share their knowledge and learn from each other.
                             </p>
+                            <div>
                                 <button class="btn btn-light btn-lg me-3">
                                     <i class="fa-solid fa-right-to-bracket"></i> Start! It's Free
                                 </button>
                                 <button class="btn btn-outline-light btn-lg">
                                     <i class="fa-solid fa-user"></i> Login
                                 </button>
+                            </div>
                         </div>
                     </section>
+                </div>
+
+                <!-- cards -->
+                <div class="container">
+                    <div class="row mt-md-3">
+                        <div class="col-md-4">
+                            <div class="card mt-3 mt-md-0">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Java</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk
+                                        of
+                                        the card’s content.</p>
+                                    <a href="#" class="btn primary-background text-white">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mt-3 mt-md-0">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Java</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk
+                                        of
+                                        the card’s content.</p>
+                                    <a href="#" class="btn primary-background text-white">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mt-3 mt-md-0">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Java</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk
+                                        of
+                                        the card’s content.</p>
+                                    <a href="#" class="btn primary-background text-white">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-md-3">
+                        <div class="col-md-4">
+                            <div class="card mt-3 mt-md-0">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Java</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk
+                                        of
+                                        the card’s content.</p>
+                                    <a href="#" class="btn primary-background text-white">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mt-3 mt-md-0">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Java</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk
+                                        of
+                                        the card’s content.</p>
+                                    <a href="#" class="btn primary-background text-white">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mt-3 mt-md-0">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Java</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk
+                                        of
+                                        the card’s content.</p>
+                                    <a href="#" class="btn primary-background text-white">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
