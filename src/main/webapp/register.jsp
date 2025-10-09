@@ -28,7 +28,7 @@
                                         <h3 class="text-center m-0"><i class="fa-solid fa-user-plus"></i> Register</h3>
                                     </div>
                                     <div class="card-body">
-                                        <form action="register_action.jsp" method="post">
+                                        <form id="regform" action="RegisterServlet" method="POST">
                                             <div class="row g-3">
                                                 <div class="col-md-6">
                                                     <label for="fullname" class="form-label">Full Name</label>
@@ -81,10 +81,18 @@
                                                     <textarea class="form-control" id="about" name="about" rows="2"
                                                         placeholder="Write something about yourself..."></textarea>
                                                 </div>
+                                                <div class="col-12 text-center" id="loader"
+                                                    style="display: none; margin-bottom: 15px;">
+                                                    <i class="fa fa-spinner fa-spin fa-2x"></i>
+                                                    <p>Processing...</p>
+                                                </div>
+
                                                 <div class="col-12">
                                                     <button type="submit"
                                                         class="btn btn-primary-background text-white w-100">Register</button>
                                                 </div>
+                                                <h6 id="passwordError" class="text-danger" style="display:none;">
+                                                    Passwords do not match!</h6>
                                             </div>
                                         </form>
                                     </div>
@@ -104,8 +112,104 @@
                 <!-- JS -->
                 <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script src="js/myscript.js"></script>
+                
 
+                <script>
+                    // Optimized registration form handling
+                    (function () {
+                        'use strict';
+
+                        const form = document.getElementById('regform');
+                        const loader = document.getElementById('loader');
+                        const submitBtn = form.querySelector('button[type="submit"]');
+                        const passwordError = document.getElementById('passwordError');
+
+                        // Password validation
+                        function validatePassword() {
+                            const password = document.getElementById('password').value;
+                            const confirmPassword = document.getElementById('confirm_password').value;
+
+                            if (password !== confirmPassword) {
+                                passwordError.style.display = 'block';
+                                return false;
+                            }
+                            passwordError.style.display = 'none';
+                            return true;
+                        }
+
+                        // Real-time password matching feedback
+                        const confirmPasswordField = document.getElementById('confirm_password');
+                        confirmPasswordField.addEventListener('input', validatePassword);
+
+                        // Toggle UI during submission
+                        function toggleSubmitState(isSubmitting) {
+                            if (isSubmitting) {
+                                loader.style.display = 'block';
+                                submitBtn.disabled = true;
+                                submitBtn.style.display = 'none';
+                            } else {
+                                loader.style.display = 'none';
+                                submitBtn.disabled = false;
+                                submitBtn.style.display = 'block';
+                            }
+                        }
+
+                        // Handle form submission
+                        form.addEventListener('submit', function (e) {
+                            e.preventDefault();
+
+                            // Validate passwords match
+                            if (!validatePassword()) {
+                                return;
+                            }
+
+                            toggleSubmitState(true);
+
+                            const formData = new FormData(form);
+
+                            fetch('RegisterServlet', {
+                                method: 'POST',
+                                body: formData
+                            })
+                                .then(response => response.text())
+                                .then(data => {
+                                    toggleSubmitState(false);
+
+                                    const trimmedResponse = data.trim();
+
+                                    if (trimmedResponse === 'done') {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Success!',
+                                            text: 'Registration successful! Redirecting to login...',
+                                            timer: 2000,
+                                            showConfirmButton: false,
+                                            allowOutsideClick: false
+                                        }).then(() => {
+                                            window.location.href = 'login.jsp';
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Registration Failed',
+                                            text: trimmedResponse || 'An error occurred during registration.'
+                                        });
+                                    }
+                                })
+                                .catch(error => {
+                                    toggleSubmitState(false);
+                                    console.error('Registration error:', error);
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Network Error',
+                                        text: 'Unable to connect to the server. Please check your connection and try again.'
+                                    });
+                                });
+                        });
+                    })();
+                </script>
         </body>
 
         </html>
