@@ -114,7 +114,7 @@
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script src="js/myscript.js"></script>
-                
+
 
                 <script>
                     // Optimized registration form handling
@@ -189,6 +189,38 @@
                                             allowOutsideClick: false
                                         }).then(() => {
                                             window.location.href = 'login.jsp';
+                                        });
+                                    } else if (trimmedResponse === 'exists_username') {
+                                        // Username already exists
+                                        Swal.fire({
+                                            icon: 'warning',
+                                            title: 'Username Taken',
+                                            text: 'This username is already taken. Please choose a different one.',
+                                            confirmButtonText: 'OK'
+                                        }).then(() => {
+                                            // Clear username field and focus on it
+                                            document.getElementById('username').value = '';
+                                            document.getElementById('username').focus();
+                                        });
+                                    } else if (trimmedResponse === 'email_exist') {
+                                        // Email already exists - show login option
+                                        Swal.fire({
+                                            icon: 'warning',
+                                            title: 'User Already Exists',
+                                            text: 'An account with this email already exists.',
+                                            showCancelButton: true,
+                                            confirmButtonText: 'Go to Login',
+                                            cancelButtonText: 'Try Different Email',
+                                            confirmButtonColor: '#3085d6',
+                                            cancelButtonColor: '#6c757d'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                window.location.href = 'login.jsp';
+                                            } else {
+                                                // Clear email field and focus on it
+                                                document.getElementById('email').value = '';
+                                                document.getElementById('email').focus();
+                                            }
                                         });
                                     } else {
                                         Swal.fire({

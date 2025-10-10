@@ -35,16 +35,20 @@ public class RegisterServlet extends HttpServlet {
                 out.println("Please fill all required fields!");
                 return;
             }
-            System.out.println("Name: " + name);
-            System.out.println("Username: " + username);
-            System.out.println("Email: " + email);
-            System.out.println("Password: " + password);
-            System.out.println("Gender: " + gender);
-            System.out.println("About: " + about);
             // Creating user object
-            User user=new User(name, username, email, password, gender, about);
 
             UserDao dao=new UserDao(ConnectionProvider.getConnection());
+            if(dao.isEmailExists(email)){
+                out.println("email_exist");
+                return;
+            }
+            if (dao.isUsernameExists(username)) {
+                out.print("exists_username"); // Special response for existing username
+                return;
+            }
+
+
+            User user=new User(name, username, email, password, gender, about);
             if(dao.saveUser(user)){
                 out.println("done");
             }else{
