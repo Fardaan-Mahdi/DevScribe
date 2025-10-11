@@ -10,6 +10,7 @@ public class User {
     private String gender;
     private Timestamp dateTime;
     private String about;
+    private String profile;
 
     public User(int id, String name, String username, String email, String password, String gender, Timestamp dateTime, String about) {
         this.id = id;
@@ -20,6 +21,22 @@ public class User {
         this.gender = gender;
         this.dateTime = dateTime;
         this.about = about;
+        this.profile="default.png";
+    }
+
+    // Constructor with profile
+    public User(int id, String name, String username, String email,
+                String password, String gender, Timestamp dateTime,
+                String about, String profile) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.dateTime = dateTime;
+        this.about = about;
+        this.profile = profile;
     }
 
     public User(){
@@ -33,7 +50,9 @@ public class User {
         this.password = password;
         this.gender = gender;
         this.about = about;
+        this.profile="default.png";
     }
+
 
     public int getId() {
         return id;
@@ -98,5 +117,13 @@ public class User {
 
     public void setAbout(String about) {
         this.about = about;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 }
